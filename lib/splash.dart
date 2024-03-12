@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
+import 'package:traver/view/intro_page/intro1.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -14,8 +16,8 @@ class _Splashstate extends State<Splash> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    Future.delayed(const Duration(seconds: 1), () {
-      Get.offAll(() => HomePage());
+    Future.delayed(const Duration(seconds: 2), () {
+      Get.offAll(() => const IntroPage());
     });
   }
 
@@ -28,6 +30,20 @@ class _Splashstate extends State<Splash> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+          systemNavigationBarIconBrightness: Brightness.light,
+          statusBarColor: Colors.transparent),
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Image.asset('Assets/icon/icon.png'),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
