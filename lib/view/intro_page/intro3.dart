@@ -1,37 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:traver/controller/controller.dart';
 import 'package:traver/widget/intro.dart';
 
-class IntroPage1 extends StatefulWidget {
-  const IntroPage1({super.key});
+class IntroPage3 extends StatefulWidget {
+  const IntroPage3({super.key});
 
   @override
-  State<IntroPage1> createState() => _IntroPage1State();
+  State<IntroPage3> createState() => _IntroPage3State();
 }
 
-class _IntroPage1State extends State<IntroPage1> {
-
-  void UpdateState(){
+class _IntroPage3State extends State<IntroPage3> {
+  void UpdateState() {
     setState(() {
       selectedIndex++;
       Get.offAllNamed('intro2');
     });
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: introMethod(
-          
-          images: 'Assets/images/pics1.jpeg',
+          images: 'Assets/images/pics3.jpeg',
           UpdateState,
           num: size.height * 1,
-          text: 'Lets explore \nthe world',
-          text1: 'Lets explore the world with us with just a \nfew clicks',
-          buttontext: 'Next'),
+          text: 'Get ready for \nnext trip',
+          text1: 'Find thousands of tourist destinations \nready for you to visit',
+          buttontext: 'Get Started'),
     );
   }
 }
