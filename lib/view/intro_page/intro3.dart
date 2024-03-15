@@ -15,7 +15,7 @@ class _IntroPage3State extends State<IntroPage3> {
   void UpdateState() {
     setState(() {
       selectedIndex++;
-      Get.offAllNamed('intro2');
+      Get.offAllNamed('Login');
     });
   }
 
