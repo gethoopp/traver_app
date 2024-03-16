@@ -12,7 +12,7 @@ class IntroPage1 extends StatefulWidget {
 
 class _IntroPage1State extends State<IntroPage1> {
 
-  void UpdateState(){
+  void updateState(){
     setState(() {
       selectedIndex++;
       Get.offAllNamed('intro2');
@@ -27,7 +27,7 @@ class _IntroPage1State extends State<IntroPage1> {
       body: introMethod(
           
           images: 'Assets/images/pics1.jpeg',
-          UpdateState,
+          updateState,
           num: size.height * 1,
           text: 'Lets explore \nthe world',
           text1: 'Lets explore the world with us with just a \nfew clicks',

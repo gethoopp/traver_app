@@ -4,7 +4,7 @@ TextFormField buttonemail() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-          labelText: 'Email Adress',
+          labelText: 'Email Address',
           floatingLabelStyle: TextStyle(color: Colors.amber),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(15))),

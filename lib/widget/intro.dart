@@ -7,7 +7,7 @@ import 'package:traver/controller/controller.dart';
 // ignore: non_constant_identifier_names
 Stack introMethod(
     //Size size,
-     VoidCallback UpdateState,
+     VoidCallback updateState,
     {required String images,
     required String text,
     required String text1,
@@ -85,7 +85,7 @@ Stack introMethod(
                           Colors.amber),
                       shape: MaterialStateProperty.all(const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))))),
-                  onPressed: UpdateState,
+                  onPressed: updateState,
                   child:  Text(
                     buttontext,
                     style: const TextStyle(color: Colors.black),

@@ -12,7 +12,7 @@ class IntroPage2 extends StatefulWidget {
 }
 
 class _IntroPage2State extends State<IntroPage2> {
-  void UpdateState() {
+  void updateState() {
     setState(() {
       selectedIndex++;
       Get.offAllNamed('intro3');
@@ -25,7 +25,7 @@ class _IntroPage2State extends State<IntroPage2> {
     return Scaffold(
       body: introMethod(
           images: 'Assets/images/pics2.jpeg',
-          UpdateState,
+          updateState,
           num: size.height * 1,
           text: 'Visit tourist \nattractions',
           text1: 'Find thousands of tourist destinations \nready for you to visit',
