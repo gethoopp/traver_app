@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:traver/controller/routes.dart/routes.dart';
 import 'package:traver/splash.dart';
 import 'package:get/get.dart';
+import 'package:traver/view/auth/login.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:traver/widget/button.dart';
 import 'package:traver/widget/userbutton.dart';
@@ -17,14 +20,13 @@ class Login extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                  top: size.height * 0.2,
-                ),
-                child: const ImageIcon(
-                  AssetImage('Assets/icon/icon.png'),
-                  size: 150,
-                ),
-              ),
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.2,
+                  ),
+                  child: const ImageIcon(
+                    AssetImage('Assets/icon/icon.png'),
+                    size: 150,
+                  ).animate().fadeIn().then(delay: 200.microseconds).slide()),
             ],
           ),
           Column(
@@ -34,7 +36,8 @@ class Login extends StatelessWidget {
                 child: SizedBox(
                   width: 315,
                   height: 50,
-                  child: buttonemail(),
+                  child:
+                      buttonemail().animate().fadeIn(duration: const Duration(seconds: 1)),
                 ),
               ),
               const SizedBox(
@@ -42,7 +45,11 @@ class Login extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(left: size.height * 0.04),
-                child: SizedBox(width: 315, height: 50, child: buttonPass()),
+                child: SizedBox(
+                    width: 315,
+                    height: 50,
+                    child:
+                        buttonPass().animate().fadeIn(duration: const Duration(seconds: 1))),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 50),
@@ -59,12 +66,15 @@ class Login extends StatelessWidget {
                   SizedBox(
                     width: size.width * 0.1,
                   ),
-                  Text(
-                    "Forgot Password",
-                    style: GoogleFonts.headlandOne(
-                        fontSize: 14, color: Colors.grey),
+                  GestureDetector(
+                    onTap: () => Get.toNamed('/Register'),
+                    child: Text(
+                      "Forgot Password",
+                      style: GoogleFonts.headlandOne(
+                          fontSize: 14, color: Colors.grey),
+                    ),
                   ),
-                ]),
+                ]).animate().fadeIn(duration: const Duration(seconds: 1)),
               )
             ],
           ),
@@ -73,17 +83,26 @@ class Login extends StatelessWidget {
             child: SizedBox(
               width: 315,
               height: 50,
-              child: userbutton(text: 'Create Account', colors: Colors.grey,),
+              child: userbutton(
+                text: 'Create Account',
+                colors: Colors.grey,
+              ),
             ),
+          ).animate().fadeIn().then(delay: 500.microseconds).slide(
+            curve: Curves.easeIn,
+            begin: const Offset(-5, 0)
           ),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 25 ),
+            padding: const EdgeInsets.only(left: 25),
             child: SizedBox(
               width: 315,
               height: 50,
-              child: userbutton(text: 'Sign In', colors: Colors.amber, colorss: Colors.amber),
-            ),
+              child: userbutton(
+                  text: 'Sign In', colors: Colors.amber, colorss: Colors.amber),
+            ).animate().fadeIn().then(delay: 500.microseconds).slide(begin: const Offset(-5, 0)),
           ),
         ],
       ),
