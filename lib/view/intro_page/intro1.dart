@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:traver/controller/controller.dart';
 import 'package:traver/widget/intro.dart';
@@ -23,15 +24,20 @@ class _IntroPage1State extends State<IntroPage1> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: introMethod(
-          
-          images: 'Assets/images/pics1.jpeg',
-          updateState,
-          num: size.height * 1,
-          text: 'Lets explore \nthe world',
-          text1: 'Lets explore the world with us with just a \nfew clicks',
-          buttontext: 'Next'),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent
+      ),
+      child: Scaffold(
+        body: introMethod(
+            
+            images: 'Assets/images/pics1.jpeg',
+            updateState,
+            num: size.height * 1,
+            text: 'Lets explore \nthe world',
+            text1: 'Lets explore the world with us with just a \nfew clicks',
+            buttontext: 'Next'),
+      ),
     );
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextButton userbutton({required String text, required Color colors,  Color? colorss}) {
+TextButton userbutton({required String text, required Color colors,  Color? colorss, void Function()? onPressed}) {
   return TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(colorss),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -12,6 +12,6 @@ TextButton userbutton({required String text, required Color colors,  Color? colo
       child: Text(
         text,
         style: GoogleFonts.headlandOne(
-            fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
       ));
 }

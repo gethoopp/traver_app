@@ -6,12 +6,24 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:traver/widget/button.dart';
 import 'package:traver/widget/userbutton.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
+    void onPressed(){
+      setState(() {
+        Get.toNamed('/CreateAccount');
+      });
+      
+    }
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -67,7 +79,7 @@ class Login extends StatelessWidget {
                     width: size.width * 0.1,
                   ),
                   GestureDetector(
-                    onTap: () => Get.toNamed('/Register'),
+                    onTap: () => Get.toNamed('/Forgot'),
                     child: Text(
                       "Forgot Password",
                       style: GoogleFonts.headlandOne(
@@ -84,6 +96,7 @@ class Login extends StatelessWidget {
               width: 315,
               height: 50,
               child: userbutton(
+                onPressed: onPressed,
                 text: 'Create Account',
                 colors: Colors.grey,
               ),

@@ -1,14 +1,18 @@
   import 'package:flutter/material.dart';
 
-TextFormField buttonemail() {
+TextFormField buttonemail(
+  {
+    String? text
+  }
+) {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-          labelText: 'Email Address',
-          floatingLabelStyle: TextStyle(color: Colors.amber),
-          enabledBorder: OutlineInputBorder(
+      decoration:  InputDecoration(
+          labelText: text ?? 'Email Address',
+          floatingLabelStyle: const TextStyle(color: Colors.amber),
+          enabledBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(15))),
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(15),
               ),
