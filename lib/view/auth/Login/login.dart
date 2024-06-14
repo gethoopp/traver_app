@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:traver/controller/controller.dart';
+import 'package:traver/cubit/auth_cubit_cubit.dart';
 import 'package:traver/widget/button.dart';
 import 'package:traver/widget/userbutton.dart';
 
@@ -13,10 +15,15 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 }
 
+enum ButtonState{init,loaded,succes}
+
 class _LoginState extends State<Login> {
+  ButtonState state = ButtonState.init;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    //final isStrecth = state == ButtonState.init;
+    //final isDone = state == ButtonState.succes;
 
     void onPressed(){
       setState(() {
@@ -34,10 +41,11 @@ class _LoginState extends State<Login> {
               Padding(
                   padding: EdgeInsets.only(
                     top: size.height * 0.2,
+                    bottom: size.height * 0.1
                   ),
-                  child: const ImageIcon(
-                    AssetImage('Assets/icon/icon.png'),
-                    size: 150,
+                  child:  Image.asset(
+                    'Assets/icon/icon.png',
+                    
                   ).animate().fadeIn().then(delay: 200.microseconds).slide()),
             ],
           ),
@@ -114,6 +122,9 @@ class _LoginState extends State<Login> {
               width: 315,
               height: 50,
               child: userbutton(
+                onPressed: () {
+                  context.read<AuthCubitCubit>().loginuser(emailController.text , passwordController.text);
+                },
                   text: 'Sign In', colors: Colors.amber, colorss: Colors.amber),
             ).animate().fadeIn().then(delay: 500.microseconds).slide(begin: const Offset(-5, 0)),
           ),

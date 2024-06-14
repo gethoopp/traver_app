@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:traver/controller/controller.dart';
+import 'package:traver/cubit/auth_cubit_cubit.dart';
 import 'package:traver/widget/button.dart';
 import 'package:traver/widget/userbutton.dart';
 
-class CreateEmail extends StatelessWidget {
-  const CreateEmail({super.key});
- void onPressed(){
-    Get.toNamed('CreatePassword');
-  }
+class CreatePassword extends StatelessWidget {
+  const CreatePassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -44,7 +44,7 @@ class CreateEmail extends StatelessWidget {
                   padding: EdgeInsets.only(
                       left: size.width * 0.1, top: size.height * 0.03),
                   child: Text(
-                    'And, your email?',
+                    'Create a password',
                     style: GoogleFonts.headlandOne(
                         color: Colors.black,
                         fontWeight: FontWeight.w700,
@@ -55,40 +55,27 @@ class CreateEmail extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(size.height * 0.035),
-              child: SizedBox(width: 340, height: 50, child: buttonemail(
-                controller: emailController
-              )),
+              child: SizedBox(width: 340, height: 50, child: buttonPass()),
             ),
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 40),
+                  padding: const EdgeInsets.only(left: 30),
                   child: Text(
-                    'I\'d Like To Recieved Marketing and Policy \nCommunication From Traver And It\'s Partners',
+                    'Your password must include at least one symbols and be 8\nor more character long',
                     style: GoogleFonts.headlandOne(
                         fontSize: 10, color: Colors.grey),
                   ),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Switch(
-                  value: true,
-                  onChanged: (value) {},
-                  activeColor: Colors.black,
-                  activeTrackColor: Colors.white,
-                  thumbColor: WidgetStateProperty.all(Colors.black),
-                  trackOutlineColor: WidgetStateProperty.all(Colors.black),
-                )
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 50),
+            const Padding(
+              padding: EdgeInsets.only(top: 50),
               child: Divider(
-                  thickness: 4,
-                  color: Colors.black,
-                  endIndent: size.width * 0.3,
-                ),
+                thickness: 4,
+                color: Colors.black,
+                endIndent: 5,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(top: size.height * 0.1),
@@ -96,8 +83,15 @@ class CreateEmail extends StatelessWidget {
                   width: 315,
                   height: 50,
                   child: userbutton(
-                    onPressed: onPressed,
-                      text: 'Create Password',
+                      onPressed: () {
+                        context.read<AuthCubitCubit>().registeruser(
+                              firstuserNameController.text +
+                                  lastusernameController.text,
+                              passwordController.text,
+                              emailController.text,
+                            );
+                      },
+                      text: 'Verification',
                       colors: Colors.transparent,
                       colorss: Colors.amber)),
             )

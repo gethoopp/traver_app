@@ -1,0 +1,5 @@
+@startuml Travel_app
+
+entity Users 
+
+

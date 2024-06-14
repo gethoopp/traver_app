@@ -81,9 +81,9 @@ Stack introMethod(
                 padding: const EdgeInsets.only(top: 50),
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
+                      backgroundColor: WidgetStateProperty.all(
                           Colors.amber),
-                      shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                      shape: WidgetStateProperty.all(const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))))),
                   onPressed: updateState,
                   child:  Text(

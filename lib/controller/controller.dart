@@ -1,5 +1,8 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 int selectedIndex = 0;
- TextEditingController userNameController = TextEditingController();
+TextEditingController firstuserNameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController lastusernameController = TextEditingController();
+

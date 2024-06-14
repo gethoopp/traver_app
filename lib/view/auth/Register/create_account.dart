@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:traver/controller/controller.dart';
 import 'package:traver/widget/button.dart';
 import 'package:traver/widget/userbutton.dart';
 
@@ -66,7 +66,9 @@ class _CreateAccountState extends State<CreateAccount> {
                 height: 110,
                 child: Padding(
                   padding: EdgeInsets.only(top: size.height * 0.08),
-                  child: buttonemail(text: "First Name"),
+                  child: buttonemail(
+                    controller: firstuserNameController,
+                    text: "First Name"),
                 ),
               ),
               Padding(
@@ -75,6 +77,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     width: 310,
                     height: 50,
                     child: buttonemail(
+                      controller: lastusernameController,
                       text: "Last Name",
                     )),
               )
