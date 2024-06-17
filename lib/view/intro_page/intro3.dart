@@ -30,6 +30,7 @@ class _IntroPage3State extends State<IntroPage3> {
       child: Scaffold(
         body: introMethod(
             images: 'Assets/images/pics3.jpeg',
+            size,
             updateState,
             num: size.height * 1,
             text: 'Get ready for \next trip',

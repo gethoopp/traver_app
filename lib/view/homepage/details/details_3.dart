@@ -22,11 +22,10 @@ class Details3 extends StatelessWidget {
                     image: const AssetImage('Assets/images/ijen.jpg'),
                     fit: BoxFit.cover,
                   ),
-
-                   Row(
+                  Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 30, left: 20),
+                        padding:  EdgeInsets.only(top: size.height * 0.08, left: 20),
                         child: IconButton(
                             onPressed: () {},
                             icon: const Icon(
@@ -111,31 +110,27 @@ class Details3 extends StatelessWidget {
                           color: Colors.white, fontWeight: FontWeight.w500),
                     )),
                   ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsets.only(top: size.height * 0.7, left: 30),
-                        child: const Center(
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: size.height * 0.77, left: size.width * 0.07),
+                    child: Row(
+                      children: [
+                        const Center(
                             child: Image(
                                 image: AssetImage('Assets/icon/star.png'))),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsets.only(top: size.height * 0.7, left: 10),
-                        child: Text(
+                        Text(
                           '4.8',
                           style: GoogleFonts.urbanist(
                               color: Colors.white, fontSize: 18),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Row(
                     children: [
                       Padding(
                         padding:
-                            EdgeInsets.only(top: size.height * 0.9, left: 30),
+                            EdgeInsets.only(top: size.height * 0.95, left: 30),
                         child: Text(
                           '\$245.00 /person',
                           style: GoogleFonts.urbanist(

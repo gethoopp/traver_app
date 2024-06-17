@@ -32,6 +32,7 @@ class _IntroPage1State extends State<IntroPage1> {
         body: introMethod(
             
             images: 'Assets/images/pics1.jpeg',
+            size,
             updateState,
             num: size.height * 1,
             text: 'Lets explore \nthe world',

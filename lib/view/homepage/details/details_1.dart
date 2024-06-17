@@ -25,7 +25,7 @@ class Details1 extends StatelessWidget {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 30, left: 20),
+                        padding:  EdgeInsets.only(top: size.height * 0.08, left: 20),
                         child: IconButton(
                             onPressed: () {},
                             icon: const Icon(
@@ -99,13 +99,15 @@ class Details1 extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: size.height * 0.5, left: 20),
+                    padding: EdgeInsets.only(top: size.height * 0.5, left: size.width * 0.02),
                     child: Center(
-                        child: Text(
-                      textAlign: TextAlign.justify,
-                      ' Bali is an island in indonesia known for its verdont \n volcanoes, unique rice terraces, beaches, and beautiful \n coral reefs. Before becoming a tourist attraction. Kuta \n was a trading part where local product were traded to \n buyers from outside Bali.',
-                      style: GoogleFonts.urbanist(
-                          color: Colors.white, fontWeight: FontWeight.w500),
+                        child: FittedBox(
+                      child: Text(
+                        textAlign: TextAlign.justify,
+                        ' Bali is an island in indonesia known for its verdont \n volcanoes, unique rice terraces, beaches, and beautiful \n coral reefs. Before becoming a tourist attraction. Kuta \n was a trading part where local product were traded to \n buyers from outside Bali.',
+                        style: GoogleFonts.urbanist(
+                            color: Colors.white, fontWeight: FontWeight.w500),
+                      ),
                     )),
                   ),
                   Row(

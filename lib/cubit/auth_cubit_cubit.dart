@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:traver/controller/routes.dart/verify_token.dart';
 
 part 'auth_cubit_state.dart';
 
@@ -37,8 +38,8 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
     }
   }
 
-  void loginuser( String emailController,String passwordController) async {
-    const storage =  FlutterSecureStorage();
+  void loginuser(String emailController, String passwordController) async {
+    const storage = FlutterSecureStorage();
     try {
       Dio dio = Dio();
       final result = await dio.post("http://192.168.1.21:8080/api/login",
@@ -55,6 +56,20 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
       }
     } catch (e) {
       Get.snackbar(e.toString(), "Harap Ulang Kembali");
+    }
+  }
+
+  void isTokenNull() async {
+    try {
+      String? token = await Services().readToken();
+
+      if (token == null || Services().isverifyToken(token)) {
+        emit(AuthUnAuthentic());
+      } else {
+        emit(AuthAuthentic());
+      }
+    } catch (e) {
+      emit(AuthErr("Error While Checking Token"));
     }
   }
 }

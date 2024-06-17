@@ -62,7 +62,7 @@ class CreateEmail extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 40),
+                  padding:  EdgeInsets.only(left: size.width * 0.04 ),
                   child: Text(
                     'I\'d Like To Recieved Marketing and Policy \nCommunication From Traver And It\'s Partners',
                     style: GoogleFonts.headlandOne(

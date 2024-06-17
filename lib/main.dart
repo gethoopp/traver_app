@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       value: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.white,
+        statusBarColor: Colors.transparent,
       ),
       child: BlocProvider(
         create: (context) => AuthCubitCubit(),
@@ -46,7 +46,17 @@ class _MyAppState extends State<MyApp> {
             getPages: appRoute(),
             debugShowCheckedModeBanner: false,
             title: 'Traver App',
-            home: const Splash()),
+            home: BlocBuilder<AuthCubitCubit, AuthCubitState>(
+              builder: (context, state) {
+                if (state is AuthUnAuthentic) {
+                  return const Splash();
+                } else if (state is AuthAuthentic){
+                  return const HomePage();
+                } else {
+                  return Container();
+                }
+              }
+            )),
       ),
     );
   }

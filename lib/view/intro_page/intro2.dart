@@ -28,6 +28,7 @@ class _IntroPage2State extends State<IntroPage2> {
       child: Scaffold(
         body: introMethod(
             images: 'Assets/images/pics2.jpeg',
+            size,
             updateState,
             num: size.height * 1,
             text: 'Visit tourist \nattractions',

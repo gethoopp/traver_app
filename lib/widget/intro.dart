@@ -6,7 +6,7 @@ import 'package:traver/controller/controller.dart';
 
 // ignore: non_constant_identifier_names
 Stack introMethod(
-    //Size size,
+    Size size,
      VoidCallback updateState,
     {required String images,
     required String text,
@@ -52,13 +52,15 @@ Stack introMethod(
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 30, top: 40),
-                child: Text(
-                  text1,
-                  style: GoogleFonts.headlandOne(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
+                padding:  EdgeInsets.only(left: size.width * 0.02 , top: 40),
+                child: FittedBox(
+                  child: Text(
+                    text1,
+                    style: GoogleFonts.headlandOne(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  ),
                 ),
               )
             ],
