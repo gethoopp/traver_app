@@ -12,9 +12,9 @@ class Services {
     return storage.delete(key: "Jwt_token_user");
   }
 
-  bool isverifyToken(String? token) {
+  bool isverifyToken(String token) {
     try {
-      DateTime expirated = JwtDecoder.getExpirationDate(token!);
+      DateTime expirated = JwtDecoder.getExpirationDate(token);
 
       return expirated.isBefore(DateTime.now());
     } catch (e) {

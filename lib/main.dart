@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:traver/bloc/verify_bloc.dart';
 import 'package:traver/controller/controller.dart';
 import 'package:traver/controller/routes.dart/routes.dart';
 import 'package:get/get.dart';
@@ -40,21 +41,32 @@ class _MyAppState extends State<MyApp> {
         statusBarIconBrightness: Brightness.dark,
         statusBarColor: Colors.transparent,
       ),
-      child: BlocProvider(
+      child: MultiBlocProvider(
+       providers: [BlocProvider(
         create: (context) => AuthCubitCubit(),
+        
+        
+       ),
+         BlocProvider(
+          create: (context) => VerifyBloc()..add(Verifytoken()),
+         
+         )
+       ],
         child: GetMaterialApp(
             getPages: appRoute(),
             debugShowCheckedModeBanner: false,
             title: 'Traver App',
-            home: BlocBuilder<AuthCubitCubit, AuthCubitState>(
+            home: BlocBuilder<VerifyBloc, VerifyState>(
               builder: (context, state) {
-                if (state is AuthUnAuthentic) {
+                if (state is AuthCubitInitial) {
+                  return  const Splash();
+                } else if (state is AuthUnAuthentic){
                   return const Splash();
-                } else if (state is AuthAuthentic){
+                } else if (state is AuthAuthentic) {
                   return const HomePage();
-                } else {
-                  return Container();
                 }
+
+                return Container();
               }
             )),
       ),

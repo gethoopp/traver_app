@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:traver/controller/routes.dart/verify_token.dart';
+
 
 part 'auth_cubit_state.dart';
 
@@ -26,15 +26,10 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
         emit(AuthSucces(result.data));
         Get.offAllNamed('/Login');
       } else {
-        const SnackBar(
-            content: Dialog(
-          child: Center(
-            child: Text("Harap, Ulangi Kembali!"),
-          ),
-        ));
+        return;
       }
-    } catch (e) {
-      e.toString();
+    } on DioException catch  (e) {
+          Get.snackbar(e.response?.data["message"], "Harap Ulang Kembali");
     }
   }
 
@@ -49,27 +44,15 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
           },
           options: Options(contentType: 'application/json'));
 
-      if (result.statusCode == 200) {
+      if (result.statusCode == 200 || result.statusCode == 201) {
         emit(AuthSucces(result.data));
-        await storage.write(key: "Jwt_token_user", value: result.data['token']);
+        await storage.write(key: "Jwt_token_user", value: result.data['TOKEN']);
+
+        print(storage.read(key: "Jwt_token_user"));
         Get.offAllNamed('/Homepage');
       }
-    } catch (e) {
-      Get.snackbar(e.toString(), "Harap Ulang Kembali");
-    }
-  }
-
-  void isTokenNull() async {
-    try {
-      String? token = await Services().readToken();
-
-      if (token == null || Services().isverifyToken(token)) {
-        emit(AuthUnAuthentic());
-      } else {
-        emit(AuthAuthentic());
-      }
-    } catch (e) {
-      emit(AuthErr("Error While Checking Token"));
+    } on DioException catch (e) {
+      Get.snackbar(e.response?.data["message"], "Harap Ulang Kembali");
     }
   }
 }

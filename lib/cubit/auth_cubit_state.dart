@@ -14,9 +14,7 @@ final class AuthSucces extends AuthCubitState {
   List<Object> get props => [data];
 }
 
-final class AuthAuthentic extends AuthCubitState{}
 
-final class AuthUnAuthentic extends AuthCubitState{}
 
 final class AuthErr extends AuthCubitState {
   final String message;
