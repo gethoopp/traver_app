@@ -7,7 +7,6 @@ import 'package:traver/controller/routes.dart/routes.dart';
 import 'package:get/get.dart';
 import 'package:traver/cubit/auth_cubit_cubit.dart';
 import 'package:traver/splash.dart';
-import 'package:traver/view/auth/Login/login.dart';
 import 'package:traver/view/homepage/home.dart';
 
 void main() {

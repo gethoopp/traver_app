@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
-
 part 'auth_cubit_state.dart';
 
 class AuthCubitCubit extends Cubit<AuthCubitState> {
@@ -26,10 +25,10 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
         emit(AuthSucces(result.data));
         Get.offAllNamed('/Login');
       } else {
-        return;
+        Get.snackbar(result.data["message"], "Harap Ulang Kembali");
       }
-    } on DioException catch  (e) {
-          Get.snackbar(e.response?.data["message"], "Harap Ulang Kembali");
+    } on DioException catch (e) {
+      return e;
     }
   }
 
@@ -44,15 +43,19 @@ class AuthCubitCubit extends Cubit<AuthCubitState> {
           },
           options: Options(contentType: 'application/json'));
 
+          
+
       if (result.statusCode == 200 || result.statusCode == 201) {
         emit(AuthSucces(result.data));
         await storage.write(key: "Jwt_token_user", value: result.data['TOKEN']);
 
         print(storage.read(key: "Jwt_token_user"));
         Get.offAllNamed('/Homepage');
+      } else {
+        Get.snackbar(result.data["message"], "Harap Ulang Kembali");
       }
     } on DioException catch (e) {
-      Get.snackbar(e.response?.data["message"], "Harap Ulang Kembali");
+      return;
     }
   }
 }
