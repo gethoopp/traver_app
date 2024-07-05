@@ -22,3 +22,16 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
     });
   }
 }
+
+class DataGet extends Bloc<VerifyEvent, VerifyState> {
+  DataGet() : super(VerifyInitial()) {
+    on<DataProd>((event, emit) {
+       try {
+         
+       } catch (e) {
+         
+       }
+    });
+  }
+}
+
